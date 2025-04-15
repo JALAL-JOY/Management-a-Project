@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/3.0.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+    <title>Document</title>
+    <style>
+      body {
+        background: linear-gradient(270deg, #fefeffad, #364b53e1, #4f8edfe9);
+        background-size: 600% 600%;
+        animation: gradientAnimation 15s ease infinite;
+        font-family: "Segoe UI", sans-serif;
+        color: #ddd;
+      }
+
+      @keyframes gradientAnimation {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      .contactez {
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 20px;
+        background: #1f1f1f;
+        border: 1px solid #333;
+        border-radius: 20px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      label {
+        font-size: 20px;
+        font-weight: bold;
+        color: #f0f0f0;
+      }
+
+      .contactez h1 {
+        font-size: 36px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+
+      .input1 {
+        margin-bottom: 20px;
+      }
+
+      .input1 label {
+        display: block;
+        font-size: 16px;
+        margin-bottom: 5px;
+      }
+
+      .input1 input {
+        width: 90%;
+        height: 40px;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #444;
+        border-radius: 5px;
+        background-color: #2e2e2e;
+        color: #fff;
+      }
+
+      .input1 input[type="text"] {
+        color: #56ccf2;
+      }
+
+      .two_btn {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .btn1,
+      .btn2 {
+        display: block;
+        margin: 15px auto;
+        width: 300px;
+        background: linear-gradient(90deg, #c1c6cc, #56ccf2);
+        color: #fff;
+        padding: 10px 20px;
+        font-size: 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+
+      .btn1:hover,
+      .btn2:hover {
+        background: linear-gradient(90deg, #e1eff3, #6a7685);
+      }
+
+      table {
+        margin-top: 20px;
+        border-collapse: collapse;
+        width: 100%;
+        background-color: #1f1f1f;
+        color: #ddd;
+      }
+
+      th,
+      td {
+        border: 1px solid #444;
+        padding: 10px;
+        text-align: left;
+      }
+
+      th {
+        background-color: #2a2a2a;
+      }
+
+      .total-row {
+        color: #fff;
+        font-weight: bold;
+        background: linear-gradient(90deg, #2f80ed, #56ccf2);
+      }
+
+      .bx-message-square-minus {
+        display: none;
+      }
+
+      #btnsprm {
+        background-color: red;
+        border: none;
+        border-radius: 26px;
+        color: white;
+        padding: 8px 15px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+      }
+
+      footer {
+        margin-top: 10%;
+        display: flex;
+        border-radius: 20px;
+        justify-content: center;
+        align-items: center;
+        height: 60px;
+        padding: 5px;
+        font-size: 20px;
+        background: linear-gradient(90deg, #e1eff3, #6a7685);
+        color: #fff;
+        text-align: center;
+      }
+
+      @media screen and (max-width: 450px) {
+        form {
+          width: 90%;
+          padding: 20px;
+        }
+
+        .contactez h1 {
+          font-size: 1.5rem;
+          margin: 0.5rem;
+        }
+
+        .input1 {
+          font-size: 0.9rem;
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .two_btn {
+          display: block;
+          flex-direction: row;
+          align-items: stretch;
+          width: 100%;
+          margin: 0.5rem 0;
+        }
+
+        .input1 input {
+          width: 100%;
+          margin: 0.3rem 0;
+        }
+
+        .btn1,
+        .btn2 {
+          flex-direction: column;
+          align-items: stretch;
+          width: 100%;
+          font-size: 1rem;
+          margin: 0.5rem 0;
+        }
+
+        .btn1:hover,
+        .btn2:hover {
+          background-color: #63ded4;
+        }
+
+        .btn1:focus,
+        .btn2:focus {
+          outline: none;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+          margin-top: 20px;
+          border-collapse: collapse;
+          width: 90%;
+          font-size: 0.25rem;
+          background-color: rgb(98, 93, 93);
+        }
+
+        th,
+        td {
+          border: 1px solid #ddd;
+          padding: 10px;
+          text-align: left;
+        }
+
+        th {
+          background-color: #aaa3a3b1;
+        }
+        .total-row {
+          color: white;
+          font-weight: bold;
+          background: rgb(39, 12, 126);
+          background: linear-gradient(
+            90deg,
+            rgba(39, 12, 126, 0.4705531870951506) 0%,
+            rgba(64, 150, 192, 1) 0%,
+            rgba(24, 0, 88, 1) 70%,
+            rgba(112, 149, 185, 1) 100%
+          );
+        }
+
+        #spn {
+          display: none;
+        }
+
+        .bx-message-square-minus {
+          display: block;
+          color: #000000;
+          width: 10px;
+          margin-right: 5px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="contactez">
+      <h1
+        style="
+          background: linear-gradient(
+            90deg,
+            rgb(212, 222, 222),
+            rgba(92, 166, 166, 0.92),
+            rgb(231, 231, 231)
+          );
+          background-clip: text;
+          -webkit-background-clip: text;
+          color: transparent;
+          -webkit-text-fill-color: transparent;
+        "
+      >
+        Project Management
+      </h1>
+      <hr />
+
+      <form action="/page-traitement-donnees" method="post">
+        <div class="input1">
+          <label for="nom">Project Name :</label>
+          <input
+            type="text"
+            id="project"
+            name="nom"
+            placeholder="Refference"
+            required
+          />
+        </div>
+        <div class="input1">
+          <label for="nom">Customer :</label>
+          <input
+            type="text"
+            id="customer"
+            name="nom"
+            placeholder=" Customer Name"
+            required
+          />
+        </div>
+        <div class="input1">
+          <label for="Date">Start Date:</label>
+          <input type="date" id="frst_date" name="date_début" required />
+        </div>
+        <div class="input1">
+          <label for="nom">End Date :</label>
+          <input type="date" id="lst_Date" name="date_fin" required />
+        </div>
+        <div class="two_btn">
+          <button type="button" class="btn1" onclick="ajouterLigne()">
+            <i class="bx bx-add-to-queue"></i> Add
+          </button>
+          <button type="button2" class="btn2" onclick="init()">
+            <i class="bx bx-reset"></i> Reset
+          </button>
+        </div>
+        <hr />
+        <table>
+          <tr>
+            <th>N°project</th>
+            <th>Name</th>
+            <th>Customder</th>
+            <th>Start date</th>
+            <th>End Date</th>
+            <th>Duration</th>
+            <th>Remaining Days</th>
+            <th>Status</th>
+          </tr>
+          <tbody id="tableBody"></tbody>
+          <!-- Added tbody with ID -->
+          <!-- Added totals footer -->
+          <!--  <tfoot>
+              <tr class="total-row">
+                <td colspan="4">Total HT</td>
+                <td id="totalHT">0.00</td>
+                <td></td>
+              </tr>
+              <tr class="total-row">
+                <td colspan="4">TVA (20%)</td>
+                <td id="tva">0.00</td>
+                <td></td>
+              </tr>
+              <tr class="total-row">
+                <td colspan="4">Total TTC</td>
+                <td id="totalTTC">0.00</td>
+                <td></td>
+              </tr>
+            </tfoot>-->
+        </table>
+        <div class="two_btn">
+          <button type="button2" class="btn1" onclick="PDF()">
+            <i class="bx bx-cloud-download"></i> PDF
+          </button>
+          <button type="button2" class="btn1" onclick="remove_table()">
+            <i class="bx bx-basket"></i> Remove Table
+          </button>
+        </div>
+      </form>
+    </div>
+    <footer>
+      <p>© 2025-Project By Jalal</p>
+    </footer>
+  </body>
+</html>
+<script>
+  var projet = document.getElementById("project");
+  var customer = document.getElementById("customer");
+  var frst_date = document.getElementById("frst_date");
+  var lst_Date = document.getElementById("lst_Date");
+  var tbody = document.getElementById("tableBody");
+
+  let init = () => {
+    projet.value = "";
+    customer.value = "";
+    frst_date.value = "";
+    lst_Date.value = "";
+    project.focus();
+  };
+  //FOR N PROJECT
+  var countor = 0;
+  let ajouterLigne = () => {
+    //check seven days greater
+    var a = new Date(frst_date.value);
+    var b = new Date(lst_Date.value);
+
+    let first = a.getTime();
+    let last = b.getTime();
+    let seven_days = last - 7 * 24 * 60 * 60 * 1000;
+
+    var check = first <= seven_days;
+    if (!check) {
+      alert("Please start date should be over than 7 days before end date");
+      return;
+    }
+
+    /*// n°project:
+    var code = "";
+    for (let i = 0; i < 4; i++) {
+      var v = Math.ceil(Math.random() * 9);
+      code += v;
+    }*/
+
+    // duration:
+    var duration = (last - first) / 86400000; // dayss
+
+    // remaining days:
+    var current = new Date();
+    var milli_second = current.getTime(); // millisecond
+    var days_stayed = (first - milli_second) / 86400000; // days*/
+    console.log(days_stayed);
+
+    //status:
+
+    // Create a new paragraph element
+    /*let creat = document.createElement("p");*/
+
+    // Add to table for status:
+    var p = document.createElement("p");
+
+    // Calculate time values
+    const currentTime = new Date().getTime();
+    const isProjectFinished = currentTime > last; // last = end date timestamp
+    const daysUntilStart = Math.round((first - currentTime) / 86400000); // first = start date timestamp
+    const projectDuration = Math.round((last - first) / 86400000);
+    //status
+    if (isProjectFinished) {
+      p.innerHTML = `Hey ${customer.value}, your project has finished`;
+      p.style.color = "red";
+    } else if (daysUntilStart < 0) {
+      p.innerHTML = `Hey ${customer.value}, your project is ongoing`;
+      p.style.color = "#ff4444";
+    } else if (daysUntilStart === 0) {
+      p.innerHTML = `Hey ${customer.value}, your project starts today!`;
+      p.style.color = "blue";
+    } else if (daysUntilStart > projectDuration) {
+      p.innerHTML = `Hey ${customer.value}, ${daysUntilStart} days until start (${projectDuration} day project)`;
+      p.style.color = "green";
+    } else {
+      p.innerHTML = `Hey ${customer.value}, starts in ${daysUntilStart} days`;
+      p.style.color = "orange";
+    }
+
+    /* if (Math.round(days_stayed) > duration) {
+      p.innerHTML = `Hey ${customer.value} that's good you have ${days_stayed.toFixed(0)} days`;
+      p.style.color = "green";
+  } else if (Math.round(days_stayed) === duration) {
+      p.innerHTML = `Hey ${customer.value} you have the same days left in duration`;
+      p.style.color = "blue";
+  } else if (Math.round(days_stayed) === 0) {
+      p.innerHTML = `Hey ${customer.value} your project is starting today`;
+      p.style.color = "red";
+  }else {
+      p.innerHTML = `Hey ${customer.value}your project will start in the next ${days_stayed.toFixed(0)} days` ;
+      p.style.color = "orange";
+  }
+       */
+
+    countor++;
+
+    //creat tr
+    const tr = document.createElement("tr");
+
+    tr.innerHTML = `
+      <td>N°${countor.toString().padStart(4, "0")}</td>
+      <td>${projet.value}</td>
+      <td>${customer.value}</td>
+      <td>${frst_date.value}</td>
+      <td>${lst_Date.value}</td>
+      <td>${duration.toFixed(0)} days</td>
+      <td>${days_stayed.toFixed(0)} days</td>
+    `;
+
+    //creat td status
+    var tdstatus = document.createElement("td");
+    tdstatus.appendChild(p);
+    tr.appendChild(tdstatus);
+
+    tbody.appendChild(tr);
+
+    init();
+  };
+
+  function PDF() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    doc.setFontSize(22);
+    doc.text("Project Management", 105, 20, { align: "center" });
+
+    // Clone the table
+    const tableClone = document.querySelector("table").cloneNode(true);
+
+    // Remove last column (Supreme) from header and all rows
+    tableClone.querySelectorAll("tr").forEach((row) => {
+      if (row.cells.length > 5) {
+        row.deleteCell(5); // Remove 6th cell only if it exists
+      }
+    });
+
+    // Create a temporary hidden container
+    const tempDiv = document.createElement("div");
+    tempDiv.style.display = "none";
+    tempDiv.appendChild(tableClone);
+    document.body.appendChild(tempDiv);
+
+    // Generate PDF from the modified table
+    doc.autoTable({
+      html: tableClone,
+      startY: 30,
+      theme: "grid",
+      headStyles: { fillColor: [39, 12, 126] },
+    });
+
+    // Clean up
+    document.body.removeChild(tempDiv);
+
+    doc.save("Management Project");
+  }
+
+  function remove_table() {
+    tbody.innerHTML = "";
+  }
+</script>
