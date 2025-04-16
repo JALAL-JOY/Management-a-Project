@@ -418,10 +418,10 @@
     var p = document.createElement("p");
 
     // Calculate time values
-    const currentTime = new Date().getTime();
-    const isProjectFinished = currentTime > last; // last = end date timestamp
+    var currentTime = new Date().getTime();
+    var isProjectFinished = currentTime > last; // last = end date timestamp
     var daysUntilStart = Math.round((first - currentTime) / 86400000); // first = start date timestamp
-    const projectDuration = Math.round((last - first) / 86400000);
+    var projectDuration = Math.round((last - first) / 86400000);
     //status
     if (isProjectFinished) {
       p.innerHTML = `Hey ${customer.value}, your project has finished`;
@@ -467,7 +467,7 @@
       <td>${frst_date.value}</td>
       <td>${lst_Date.value}</td>
       <td>${duration.toFixed(0)} days</td>
-      <td>${daysUntilStart.toFixed(0)} days</td>
+      <td>${daysUntilStart} days</td>
     `;
 
     //creat td status
