@@ -424,16 +424,13 @@
     var daysUntilStart = Math.round(( last - currentTime) / 86400000); // first = start date timestamp
     var projectDuration = Math.round((last - first) / 86400000);
     //status
-    if (isProjectFinished) {
+    if ( daysUntilStart <= 0) {
       p.innerHTML = `Hey ${customer.value}, your project has finished`;
       p.style.color = "red";
-    } else if (daysUntilStart < 0) {
+    } else if (daysUntilStart < duration) {
       p.innerHTML = `Hey ${customer.value}, your project is ongoing`;
       p.style.color = "#ff4444";
-    } else if (daysUntilStart === 0) {
-      p.innerHTML = `Hey ${customer.value}, your project starts today!`;
-      p.style.color = "blue";
-    } else if (daysUntilStart > projectDuration) {
+    } else if (daysUntilStart > duration) {
       p.innerHTML = `Hey ${customer.value}, ${daysUntilStart} days until start (${projectDuration} day project)`;
       p.style.color = "green";
     } else {
