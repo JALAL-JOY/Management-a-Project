@@ -401,13 +401,13 @@
     }*/
 
     // duration:
-    var duration = (last - first) / 86400000; // dayss
+  /*  var duration = (last - first) / 86400000; // dayss
 
     // remaining days:
     var current = new Date();
     var milli_second = current.getTime(); // millisecond
-    var days_stayed = (first - milli_second) / 86400000; // days*/
-    console.log(days_stayed);
+    var days_stayed = (first - milli_second) / 86400000; // days
+    console.log(days_stayed);*/
 
     //status:
 
@@ -420,7 +420,7 @@
     // Calculate time values
     const currentTime = new Date().getTime();
     const isProjectFinished = currentTime > last; // last = end date timestamp
-    const daysUntilStart = Math.round((first - currentTime) / 86400000); // first = start date timestamp
+    var daysUntilStart = Math.round((first - currentTime) / 86400000); // first = start date timestamp
     const projectDuration = Math.round((last - first) / 86400000);
     //status
     if (isProjectFinished) {
@@ -467,7 +467,7 @@
       <td>${frst_date.value}</td>
       <td>${lst_Date.value}</td>
       <td>${duration.toFixed(0)} days</td>
-      <td>${days_stayed.toFixed(0)} days</td>
+      <td>${daysUntilStart.toFixed(0)} days</td>
     `;
 
     //creat td status
