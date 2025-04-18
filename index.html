@@ -427,7 +427,7 @@
     if ( daysUntilStart <= 0) {
       p.innerHTML = `Hey ${customer.value}, your project has finished`;
       p.style.color = "red";
-    } else if (daysUntilStart < last || daysUnitlStart > first ) {
+    } else if (currentTime < last || currentTime > first) { {
       p.innerHTML = `Hey ${customer.value}, your project is ongoing`;
       p.style.color = "#ff4444";
     } else if (daysUntilStart > duration) {
